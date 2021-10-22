@@ -1,7 +1,29 @@
 version: 2
 
 models:
-  - name: epa_o3
+  - name: boston
+    description: Ozone levels
+    config:
+      materialized: table
+    columns:
+      - name: y
+        description: Ozone level
+      - name: ds
+        description: Date
+    meta:
+      fal_model: true
+  - name: los_angeles
+    description: Ozone levels
+    config:
+      materialized: table
+    columns:
+      - name: y
+        description: Ozone level
+      - name: ds
+        description: Date
+    meta:
+      fal_model: true
+  - name: miami
     description: Ozone levels
     config:
       materialized: table
