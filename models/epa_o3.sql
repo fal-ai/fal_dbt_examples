@@ -1,9 +1,3 @@
-{{
-  config(
-    materialized='table'
-  )
-}}
-
 WITH o3values as
   (SELECT * FROM {{ ref('stg_o3values') }}),
 

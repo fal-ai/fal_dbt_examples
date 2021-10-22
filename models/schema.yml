@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: epa_o3
+    description: Ozone levels
+    config:
+      materialized: table
+    columns:
+      - name: y
+        description: Ozone level
+      - name: ds
+        description: Date
+    meta:
+      fal_model: true
