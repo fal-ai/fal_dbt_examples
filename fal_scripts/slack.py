@@ -42,6 +42,7 @@ SLACK_BOT_CHANNEL. This can be done with export command:
 export SLACK_BOT_TOKEN=your-bot-token
 export SLACK_TARGET_CHANNEL=your-target-channel
 """
+
 import os
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
@@ -50,7 +51,7 @@ CHANNEL_ID = os.getenv("SLACK_BOT_CHANNEL")
 SLACK_TOKEN = os.getenv("SLACK_BOT_TOKEN")
 
 client = WebClient(token=SLACK_TOKEN)
-message_text = "Model: test_model. Status: test_status. :tada:"
+message_text = f"Model: {context.current_model.name}. Status: {context.current_model.status}."
 
 try:
     response = client.chat_postMessage(
