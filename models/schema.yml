@@ -13,21 +13,3 @@ models:
     meta:
       fal:
         scripts: ["fal_scripts/slack.py"]
-  - name: los_angeles
-    description: Ozone levels
-    config:
-      materialized: table
-    columns:
-      - name: y
-        description: Ozone level
-      - name: ds
-        description: Date
-  - name: miami
-    description: Ozone levels
-    config:
-      materialized: table
-    columns:
-      - name: y
-        description: Ozone level
-      - name: ds
-        description: Date
