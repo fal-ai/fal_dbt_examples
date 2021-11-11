@@ -10,6 +10,10 @@ models:
         description: Ozone level
       - name: ds
         description: Date
+  - name: stg_zendesk_ticket_data
+    description: zendesk ticket data
+    config:
+      materialized: table
     meta:
       fal:
-        scripts: ["fal_scripts/slack.py"]
+        scripts: ["models/zendesk_sentiment_analysis.py"]
