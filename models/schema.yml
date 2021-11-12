@@ -17,7 +17,7 @@ models:
     meta:
       fal:
         scripts: ["models/zendesk_sentiment_analysis.py"]
-  - name: zendesk
+  - name: zendesk_ticket_metrics
     description: Zendesk ticket metrics
     config:
       materialized: table

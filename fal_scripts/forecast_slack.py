@@ -1,8 +1,15 @@
 """Send an forecasted data plot to Slack.
 
+Dependencies:
+ - slack_sdk
+ - fbprophet
+
 Follow instructions in slack.py for setting up a minimal Slack bot.
 
-This example requires monthly
+This example is built for a model that has two columns: y and ds, where
+y is a metric measure and ds is a timestamp.
+
+The metric that we look at is Agent Wait Time in minutes.
 """
 
 import os
@@ -20,22 +27,8 @@ CHANNEL_ID = os.getenv("SLACK_BOT_CHANNEL")
 SLACK_TOKEN = os.getenv("SLACK_BOT_TOKEN")
 
 
-def forecast(message):
-    """Make forecast on a model and send plot to Slack."""
-    df = ref(context['current_model']['name'])
-    forecast = make_forecast(
-        dataframe=df, filename=f"{FORECAST_PREFIX}{time.time()}.png"
-    )
-    send_slack_file(
-        file_path=forecast,
-        message_text=message,
-        channel_id=CHANNEL_ID,
-        slack_token=SLACK_TOKEN,
-    )
-
-
 def make_forecast(dataframe: pd.DataFrame, filename: str):
-    """Make forecast on monthly data."""
+    """Make forecast on metric data."""
     m = Prophet()
     m.fit(dataframe)
 
@@ -67,6 +60,20 @@ def send_slack_file(
         )
     except SlackApiError as e:
         assert e.response["error"]
+
+
+def forecast(message):
+    """Make forecast on a model and send plot to Slack."""
+    df = ref(context['current_model']['name'])
+    forecast = make_forecast(
+        dataframe=df, filename=f"{FORECAST_PREFIX}{time.time()}.png"
+    )
+    send_slack_file(
+        file_path=forecast,
+        message_text=message,
+        channel_id=CHANNEL_ID,
+        slack_token=SLACK_TOKEN,
+    )
 
 
 forecast('zendesk forecast')
