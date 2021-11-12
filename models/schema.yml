@@ -17,3 +17,15 @@ models:
     meta:
       fal:
         scripts: ["models/zendesk_sentiment_analysis.py"]
+  - name: zendesk
+    description: Zendesk ticket metrics
+    config:
+      materialized: table
+    columns:
+      - name: y
+        description: Wait time
+      - name: ds
+        description: Date
+    meta:
+      fal:
+        scripts: ["fal_scripts/forecast_slack.py"]
