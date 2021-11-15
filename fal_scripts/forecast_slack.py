@@ -64,7 +64,7 @@ def send_slack_file(
 
 def forecast(message):
     """Make forecast on a model and send plot to Slack."""
-    df = ref(context['current_model']['name'])
+    df = ref(context.current_model.name)
     forecast = make_forecast(
         dataframe=df, filename=f"{FORECAST_PREFIX}{time.time()}.png"
     )
