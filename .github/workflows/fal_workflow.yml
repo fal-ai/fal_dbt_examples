@@ -19,6 +19,28 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
+          pip install --upgrade --upgrade-strategy eager -r requirements.txt
+
+      - name: Setup dbt profile
+        run: |
+          mkdir $HOME/.dbt
+          cp profiles.yml $HOME/.dbt/
+          ls -la $HOME/.dbt/
+          echo 'dbt profile is ready'
+
+      - name: Setup secret key
+        run: |
+          echo "$SERVICE_ACCOUNT_KEY" > $HOME/keyfile.json
+          ls -la $HOME/keyfile.json
+          echo 'keyfile is fine'
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+
+      - name: Run dbt and fal
+        env:
+          GCLOUD_PROJECT: ${{ secrets.GCLOUD_PROJECT }}
+          BQ_DATASET: ${{ secrets.BQ_DATASET }}
+        run: |
+          export KEYFILE_DIR=$HOME
           dbt run
           fal run
