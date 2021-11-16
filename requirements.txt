@@ -8,3 +8,4 @@ plotly
 slack_sdk
 datadog_api_client
 transformers
+torch

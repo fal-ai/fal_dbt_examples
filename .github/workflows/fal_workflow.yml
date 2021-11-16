@@ -44,5 +44,6 @@ jobs:
           SLACK_BOT_CHANNEL: ${{ secrets.SLACK_BOT_CHANNEL }}
         run: |
           export KEYFILE_DIR=$HOME
+          dbt seed
           dbt run
           fal run
