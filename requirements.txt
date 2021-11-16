@@ -1,5 +1,7 @@
-fal==0.1.26
 pystan==2.18.0
+dbt-core==0.21.0
+dbt-bigquery==0.21.0
+fal==0.1.26
 fbprophet
 slack_sdk
 datadog_api_client
