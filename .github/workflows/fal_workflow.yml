@@ -2,7 +2,7 @@ name: Run fal scripts
 
 on:
   push:
-    branches: [ test_release ]
+    branches: [ release ]
   workflow_dispatch:
 
 jobs:
@@ -40,6 +40,8 @@ jobs:
         env:
           GCLOUD_PROJECT: ${{ secrets.GCLOUD_PROJECT }}
           BQ_DATASET: ${{ secrets.BQ_DATASET }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_BOT_CHANNEL: ${{ secrets.SLACK_BOT_CHANNEL }}
         run: |
           export KEYFILE_DIR=$HOME
           dbt run

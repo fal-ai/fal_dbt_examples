@@ -2,7 +2,9 @@ dbt-core==0.21.0
 dbt-bigquery==0.21.0
 fal==0.1.26
 pystan==2.18.0
+kaleido
 fbprophet
+plotly
 slack_sdk
 datadog_api_client
 transformers
