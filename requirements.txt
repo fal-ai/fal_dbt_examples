@@ -1,0 +1,6 @@
+fal==0.1.26
+pystan==2.18.0
+fbprophet
+slack_sdk
+datadog_api_client
+transformers
