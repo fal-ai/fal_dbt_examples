@@ -9,6 +9,7 @@ models:
       fal:
         scripts:
           - fal_scripts/slack.py
+          - fal_scripts/send_datadog_event.py
   - name: stg_zendesk_ticket_data
     description: zendesk ticket data
     config:

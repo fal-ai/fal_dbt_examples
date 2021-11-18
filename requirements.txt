@@ -9,3 +9,4 @@ slack_sdk
 datadog_api_client
 transformers
 torch
+datadog_api_client
