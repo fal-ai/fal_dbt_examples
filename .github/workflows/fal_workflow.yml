@@ -29,12 +29,12 @@ jobs:
           echo 'dbt profile is ready'
 
       - name: Setup secret key
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
         run: |
           echo "$SERVICE_ACCOUNT_KEY" > $HOME/keyfile.json
           ls -la $HOME/keyfile.json
-          echo 'keyfile is ready
-        env:
-          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+          echo 'keyfile is ready'
 
       - name: Run dbt and fal
         env:
