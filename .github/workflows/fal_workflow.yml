@@ -32,7 +32,7 @@ jobs:
         run: |
           echo "$SERVICE_ACCOUNT_KEY" > $HOME/keyfile.json
           ls -la $HOME/keyfile.json
-          echo 'keyfile is fine'
+          echo 'keyfile is ready
         env:
           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
 
@@ -42,6 +42,8 @@ jobs:
           BQ_DATASET: ${{ secrets.BQ_DATASET }}
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
           SLACK_BOT_CHANNEL: ${{ secrets.SLACK_BOT_CHANNEL }}
+          DD_API_KEY: ${{ secrets.DD_API_KEY }}
+          DD_APP_KEY: ${{ secrets.DD_APP_KEY }}
         run: |
           export KEYFILE_DIR=$HOME
           dbt seed

@@ -17,6 +17,7 @@ models:
     meta:
       fal:
         scripts:
+          - fal_scripts/slack.py
           - fal_scripts/zendesk_sentiment_analysis.py
   - name: zendesk_ticket_metrics
     description: Zendesk ticket metrics
