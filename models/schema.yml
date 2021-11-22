@@ -1,32 +1,32 @@
 version: 2
 
 models:
-  # - name: boston
-  #   description: Ozone levels
-  #   config:
-  #     materialized: table
-  #   meta:
-  #     fal:
-  #       scripts:
-  #         - fal_scripts/slack.py
-  #         - fal_scripts/send_datadog_event.py
-  # - name: stg_zendesk_ticket_data
-  #   description: zendesk ticket data
-  #   config:
-  #     materialized: table
-  #   meta:
-  #     fal:
-  #       scripts:
-  #         - fal_scripts/slack.py
-  #         - fal_scripts/zendesk_sentiment_analysis.py
-  # - name: zendesk_ticket_metrics
-  #   description: Zendesk ticket metrics
-  #   config:
-  #     materialized: table
-  #   meta:
-  #     fal:
-  #       scripts:
-  #         - fal_scripts/forecast_slack.py
+  - name: boston
+    description: Ozone levels
+    config:
+      materialized: table
+    meta:
+      fal:
+        scripts:
+          - fal_scripts/slack.py
+          - fal_scripts/send_datadog_event.py
+  - name: stg_zendesk_ticket_data
+    description: zendesk ticket data
+    config:
+      materialized: table
+    meta:
+      fal:
+        scripts:
+          - fal_scripts/slack.py
+          - fal_scripts/zendesk_sentiment_analysis.py
+  - name: zendesk_ticket_metrics
+    description: Zendesk ticket metrics
+    config:
+      materialized: table
+    meta:
+      fal:
+        scripts:
+          - fal_scripts/forecast_slack.py
   - name: lombardia_covid
     description: Lombardia (IT) Covid19 Cases
     config:
