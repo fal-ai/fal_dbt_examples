@@ -21,13 +21,6 @@ jobs:
         run: |
           pip install --upgrade --upgrade-strategy eager -r requirements.txt
 
-      - name: Setup dbt profile
-        run: |
-          mkdir $HOME/.dbt
-          cp profiles.yml $HOME/.dbt/
-          ls -la $HOME/.dbt/
-          echo 'dbt profile is ready'
-
       - name: Setup secret key
         env:
           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
@@ -46,6 +39,6 @@ jobs:
           DD_APP_KEY: ${{ secrets.DD_APP_KEY }}
         run: |
           export KEYFILE_DIR=$HOME
-          dbt seed
-          dbt run
-          fal run
+          dbt seed --profiles-dir .
+          dbt run --profiles-dir .
+          fal run --profiles-dir .
