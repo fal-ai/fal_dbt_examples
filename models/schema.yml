@@ -1,5 +1,12 @@
 version: 2
 
+sources:
+  - name: results
+    database: "{{ env_var('GCLOUD_PROJECT') }}"
+    schema: "{{ env_var('BQ_DATASET') }}"
+    tables:
+      - name: ticket_data_sentiment_analysis
+
 models:
   - name: boston
     description: Ozone levels
