@@ -9,6 +9,7 @@ pystan==2.18.0
 kaleido
 fbprophet
 plotly
+numpy
 
 ## Slack
 slack_sdk
