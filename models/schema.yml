@@ -28,3 +28,7 @@ models:
       fal:
         scripts:
           - fal_scripts/forecast_slack.py
+
+fal:
+  scripts:
+    - fal_scripts/upload_to_gcs.py
