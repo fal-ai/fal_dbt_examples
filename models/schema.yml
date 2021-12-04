@@ -32,3 +32,4 @@ models:
 fal:
   scripts:
     - fal_scripts/upload_to_gcs.py
+    - fal_scripts/upload_to_s3.py
