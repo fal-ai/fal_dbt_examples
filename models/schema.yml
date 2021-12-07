@@ -6,6 +6,7 @@ models:
     config:
       materialized: table
     meta:
+      owner: "@meder"
       fal:
         scripts:
           - fal_scripts/slack.py
@@ -15,9 +16,11 @@ models:
     config:
       materialized: table
     meta:
+      owner: "@meder"
       fal:
         scripts:
           - fal_scripts/slack.py
+          - fal_scripts/write_to_firestore.py
           - fal_scripts/zendesk_sentiment_analysis.py
   - name: zendesk_ticket_metrics
     description: Zendesk ticket metrics
@@ -25,6 +28,7 @@ models:
       materialized: table
     meta:
       fal:
+        owner: "@gorkem"
         scripts:
           - fal_scripts/forecast_slack.py
   - name: lombardia_covid
@@ -35,3 +39,9 @@ models:
       fal:
         scripts:
           - fal_scripts/anomaly_detection.py
+
+fal:
+  scripts:
+    - fal_scripts/upload_to_gcs.py
+    - fal_scripts/upload_to_s3.py
+    - fal_scripts/list_owners_of_models.py
