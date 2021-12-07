@@ -6,6 +6,7 @@ models:
     config:
       materialized: table
     meta:
+      owner: "@meder"
       fal:
         scripts:
           - fal_scripts/slack.py
@@ -15,6 +16,7 @@ models:
     config:
       materialized: table
     meta:
+      owner: "@meder"
       fal:
         scripts:
           - fal_scripts/slack.py
@@ -26,6 +28,7 @@ models:
       materialized: table
     meta:
       fal:
+        owner: "@gorkem"
         scripts:
           - fal_scripts/forecast_slack.py
 
@@ -33,3 +36,4 @@ fal:
   scripts:
     - fal_scripts/upload_to_gcs.py
     - fal_scripts/upload_to_s3.py
+    - fal_scripts/list_owners_of_models.py
