@@ -214,15 +214,17 @@ def plot_anomalies(column_y: np.array, column_date: np.array, anomalies: np.arra
         anomailes
         noted.
     """
-    plt.plot([column_date[i] for i in range(column_y.size)], column_y, 'b.', markersize=4)
-    plt.plot([column_date[i] for i in anomalies], [column_y[i] for i in anomalies], 'r^', markersize=4)
-    plt.xlabel('Time')
-    plt.ylabel('Value')
-    plt.legend(['Actual', 'Anomaly Found'])
+    fig = plt.figure(figsize=(15,5))
+    axes = fig.add_axes([0.1, 0.1, 0.8, 0.8])
+    axes.plot([column_date[i] for i in range(column_y.size)], column_y, 'b.', markersize=4)
+    axes.plot([column_date[i] for i in anomalies], [column_y[i] for i in anomalies], 'r^', markersize=4)
+    axes.set_xlabel('Time')
+    axes.set_ylabel('Value')
+    axes.legend(['Actual', 'Anomaly Found'])
     now = str(datetime.datetime.now())
     now = now[:10]+'-'+now[11:13]+now[14:16]
     fpath = f'{PATH_PREFIX}/fal_scripts/anomaly_detection/{now}-{TIMEZONE}.jpg'
-    plt.savefig(fname=fpath)
+    fig.savefig(fname=fpath)
     plt.clf()
 
     return fpath
