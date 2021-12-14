@@ -1,24 +1,28 @@
 name: Run fal scripts
 
 on:
-  push:
-    branches: [release]
   workflow_dispatch:
 
 jobs:
-  deploy:
+  test:
+
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.8.x"]
+        dbt: ["0.20.1", "0.21.1"]
 
     steps:
       - uses: actions/checkout@v2
 
       - uses: actions/setup-python@v2
         with:
-          python-version: "3.8.x"
+          python-version: ${{ matrix.python }}
 
       - name: Install dependencies
         run: |
           pip install --upgrade --upgrade-strategy eager -r requirements.txt
+          pip install dbt==${{ matrix.dbt }}
 
       - name: Setup secret key
         env:
@@ -41,5 +45,5 @@ jobs:
         run: |
           export KEYFILE_DIR=$HOME
           dbt seed --profiles-dir .
-          dbt run --profiles-dir .
+          dbt run --profiles-dir . --full-refresh
           fal run --profiles-dir .
