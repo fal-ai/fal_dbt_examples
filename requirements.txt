@@ -9,6 +9,9 @@ fbprophet
 plotly
 numpy
 
+## Anomaly detection
+sklearn
+
 ## Slack
 slack_sdk
 
