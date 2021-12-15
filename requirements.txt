@@ -1,7 +1,5 @@
 # Core dependencies
-dbt-core==0.21.0
-dbt-bigquery==0.21.0
-fal==0.1.26
+fal
 
 # Script dependencies
 ## Forecasting
@@ -10,6 +8,9 @@ kaleido
 fbprophet
 plotly
 numpy
+
+## Anomaly detection
+sklearn
 
 ## Slack
 slack_sdk
