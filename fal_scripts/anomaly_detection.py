@@ -28,6 +28,8 @@ import ssl
 CHANNEL_ID = os.getenv("SLACK_BOT_CHANNEL")
 SLACK_TOKEN = os.getenv("SLACK_BOT_TOKEN")
 TIMEZONE = datetime.datetime.now(datetime.timezone.utc).astimezone().tzinfo
+
+# The path prefix is the path to your dbt project.
 PATH_PREFIX = '/Users/omeroguz/Documents/fal ai/fal_dbt_examples'
 
 def anomaly_detection(X: np.array, eps: float, min_samples: int, window_size: int):
