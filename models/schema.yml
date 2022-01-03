@@ -46,6 +46,14 @@ models:
       fal:
         scripts:
           - fal_scripts/anomaly_detection.py
+  - name: city_temperatures
+    description: New Orleans Temperatures
+    config:
+      materialized: table
+    meta:
+      fal:
+        scripts:
+          - fal_scripts/data_drift.py
 
 fal:
   scripts:
