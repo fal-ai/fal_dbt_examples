@@ -34,8 +34,8 @@ models:
     config:
       materialized: table
     meta:
+      owner: "@gorkem"
       fal:
-        owner: "@gorkem"
         scripts:
           - fal_scripts/forecast_slack.py
   - name: lombardia_covid
@@ -43,6 +43,7 @@ models:
     config:
       materialized: table
     meta:
+      owner: "@omer"
       fal:
         scripts:
           - fal_scripts/anomaly_detection.py
