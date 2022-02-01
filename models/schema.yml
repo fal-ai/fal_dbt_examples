@@ -50,6 +50,6 @@ models:
 
 fal:
   scripts:
+    - fal_scripts/list_owners_of_models.py
     - fal_scripts/upload_to_gcs.py
     - fal_scripts/upload_to_s3.py
-    - fal_scripts/list_owners_of_models.py
