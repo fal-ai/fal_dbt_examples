@@ -11,9 +11,9 @@ y is a metric measure and ds is a timestamp.
 
 The metric that we look at is Agent Wait Time in minutes.
 """
-PATH_PREFIX = '/Users/omeroguz/Documents/fal ai/fal_dbt_examples'
+import os
 import sys
-sys.path.append(f'{PATH_PREFIX}/fal_scripts')
+sys.path.append(os.path.abspath(os.path.join(context.config.script_path, '..')))
 
 from math import floor
 import ssl

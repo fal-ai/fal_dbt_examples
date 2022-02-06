@@ -1,6 +1,8 @@
-PATH_PREFIX = '/Users/omeroguz/Documents/fal ai/fal_dbt_examples'
+import os
 import sys
-sys.path.append(f'{PATH_PREFIX}/fal_scripts')
+PATH_PREFIX = os.path.abspath(os.path.join(context.config.script_path, '..'))
+sys.path.append(PATH_PREFIX)
+
 from anomaly_detection_functions import plot_anomalies, find_ideal_min_samples, anomaly_detection, find_eps_range, find_ideal_eps
 
 import numpy as np
@@ -48,7 +50,7 @@ for i in range(len(y_windowed)):
         color = 'r.'
     axes.plot(x_windowed[i], y_windowed[i], color)
 
-plt.savefig(f'{PATH_PREFIX}/fal_scripts/dd_data.png')
+plt.savefig(f'{PATH_PREFIX}/dd_data.png')
 
 # Here, we find where data drift happens and store their indexes.
 dd_years = []
