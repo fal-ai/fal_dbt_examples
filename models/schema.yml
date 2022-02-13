@@ -6,6 +6,14 @@ sources:
     schema: "{{ env_var('BQ_DATASET') }}"
     tables:
       - name: ticket_data_sentiment_analysis
+  - name: fal_github_insights
+    database: "{{ env_var('GCLOUD_PROJECT') }}"
+    schema: "{{ env_var('BQ_DATASET') }}"
+    tables:
+      - name: fal_views
+      - name: fal_clones
+      - name: fal_ppaths
+      - name: fal_preferrers
 
 models:
   - name: boston
@@ -47,6 +55,120 @@ models:
       fal:
         scripts:
           - fal_scripts/anomaly_detection.py
+  - name: fal_views_model
+    description: fal-ai/fal Github Views
+    columns:
+      - name: count
+        description: Total views in one day
+        meta:
+          dimension:
+            type: number
+          metrics:
+            daily_views:
+              type: number
+            total_views:
+              type: sum
+      - name: uniques
+        description: Total unique views in one day
+        meta:
+          dimension:
+            type: number
+          metrics:
+            daily_unique_views:
+              type: number
+      - name: timestamp
+        description: Total views in one day
+        meta:
+          dimension:
+            type: timestamp
+    config:
+      materialized: table
+    meta:
+      owner: "@omer"
+      fal:
+        scripts:
+          before:
+            - fal_scripts/fal_github_insights.py
+  - name: fal_clones_model
+    description: fal-ai/fal Github Clones
+    columns:
+      - name: count
+        description: Total clones in one day
+        meta:
+          dimension:
+            type: number
+          metrics:
+            daily_clones:
+              type: number
+            total_clones:
+              type: sum
+      - name: uniques
+        description: Total unique clones in one day
+        meta:
+          dimension:
+            type: number
+          metrics:
+            daily_unique_clones:
+              type: number
+      - name: timestamp
+        description: Total clones in one day
+        meta:
+          dimension:
+            type: timestamp
+    config:
+      materialized: table
+    meta:
+      owner: "@omer"
+  - name: fal_ppaths_model
+    description: fal-ai/fal Github Popular Paths
+    columns:
+      - name: count
+        description: Total page views in the last 14 days
+        meta:
+          dimension:
+            type: number
+      - name: uniques
+        description: Total unique page views in the last 14 days
+        meta:
+          dimension:
+            type: number
+          metrics:
+            most_popular_path:
+              type: number
+      - name: path
+        description: Popular pages of fal
+        meta:
+          dimension:
+            type: string
+    config:
+      materialized: table
+    meta:
+      owner: "@omer"
+  - name: fal_preferrers_model
+    description: fal-ai/fal Github Popular Referrers
+    columns:
+      - name: count
+        description: Total visitors from the referrer in the last 14 days
+        meta:
+          dimension:
+            type: number
+      - name: uniques
+        description: Total unique visitors from the referrer in the last 14 days
+        meta:
+          dimension:
+            type: number
+          metrics:
+            most_popular_path:
+              type: number
+      - name: referrer
+        description: Referrer sites to fal
+        meta:
+          dimension:
+            type: string
+    config:
+      materialized: table
+    meta:
+      owner: "@omer"
 
 fal:
   scripts:
