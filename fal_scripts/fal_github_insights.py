@@ -5,10 +5,10 @@ import certifi
 from io import BytesIO
 import pandas as pd
 
-ACCESS_TOKEN = os.environ['GITHUB_TOKEN']
+GITHUB_ACCESS_TOKEN = os.environ['GITHUB_TOKEN']
 
 g_url = 'https://api.github.com/repos/fal-ai/fal/traffic/'
-header_list = [f'Authorization: token {ACCESS_TOKEN}']
+header_list = [f'Authorization: token {GITHUB_ACCESS_TOKEN}']
 metrics = {'clones': '', 'views': '', 'popular/paths': '', 'popular/referrers': ''}
 
 for metric in metrics.keys():
