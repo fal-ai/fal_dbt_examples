@@ -6,6 +6,7 @@ sources:
     schema: "{{ env_var('BQ_DATASET') }}"
     tables:
       - name: ticket_data_sentiment_analysis
+      - name: raw_o3_values
 
 models:
   - name: boston
@@ -18,6 +19,20 @@ models:
         scripts:
           - fal_scripts/slack.py
           - fal_scripts/send_datadog_event.py
+
+  - name: miami
+    description: Ozone levels in Miami
+    config:
+      materialized: table
+    meta:
+      owner: "@meder"
+      fal:
+        scripts:
+          before:
+            - fal_scripts/load_o3_data.py
+          after:
+            - fal_scripts/slack.py
+
   - name: stg_zendesk_ticket_data
     description: zendesk ticket data
     config:
