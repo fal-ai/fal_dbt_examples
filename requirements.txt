@@ -1,5 +1,5 @@
 # Core dependencies
-fal
+fal=0.2.7
 
 # Script dependencies
 ## Forecasting
