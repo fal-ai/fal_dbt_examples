@@ -36,3 +36,6 @@ write_to_source(fal_views, 'fal_github_insights', 'fal_views')
 write_to_source(fal_clones, 'fal_github_insights', 'fal_clones')
 write_to_source(fal_ppaths, 'fal_github_insights', 'fal_ppaths')
 write_to_source(fal_preferrers, 'fal_github_insights', 'fal_preferrers')
+
+# append data: fal_views, fal_clones
+# update data: fal_ppaths, fal_preferrers

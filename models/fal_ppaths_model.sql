@@ -1,1 +1,1 @@
-SELECT * FROM `learning-project-305919.dbt_meder.fal_ppaths`
+SELECT * FROM {{ source('fal_github_insights', 'fal_ppaths') }}
