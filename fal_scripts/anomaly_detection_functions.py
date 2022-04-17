@@ -24,7 +24,7 @@ import datetime
 CHANNEL_ID = os.getenv("SLACK_BOT_CHANNEL")
 SLACK_TOKEN = os.getenv("SLACK_BOT_TOKEN")
 TIMEZONE = datetime.datetime.now(datetime.timezone.utc).astimezone().tzinfo
-PATH_PREFIX = '/Users/omeroguz/Documents/fal ai/fal_dbt_examples'
+PATH_PREFIX = '/Users/omeroguz/fal-dev/fal_dbt_examples/'
 
 def anomaly_detection(X: np.array, eps: float, min_samples: int, window_size: int):
     """Find anomalies on given time-series numerical data.

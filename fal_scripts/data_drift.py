@@ -1,8 +1,3 @@
-import os
-import sys
-PATH_PREFIX = os.path.abspath(os.path.join(context.config.script_path, '..'))
-sys.path.append(PATH_PREFIX)
-
 from anomaly_detection_functions import plot_anomalies, find_ideal_min_samples, anomaly_detection, find_eps_range, find_ideal_eps
 
 import numpy as np

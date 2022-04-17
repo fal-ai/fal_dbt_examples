@@ -11,13 +11,14 @@ y is a metric measure and ds is a timestamp.
 
 The metric that we look at is Agent Wait Time in minutes.
 """
-import os
-import sys
-sys.path.append(os.path.abspath(os.path.join(context.config.script_path, '..')))
 
 from math import floor
 import ssl
 from anomaly_detection_functions import *
+
+CHANNEL_ID = os.getenv("SLACK_BOT_CHANNEL")
+SLACK_TOKEN = os.getenv("SLACK_BOT_TOKEN")
+TIMEZONE = datetime.datetime.now(datetime.timezone.utc).astimezone().tzinfo
 
 model_df = ref(context.current_model.name).sort_values(by='ds')
 
