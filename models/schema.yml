@@ -14,6 +14,8 @@ sources:
       - name: fal_clones
       - name: fal_ppaths
       - name: fal_preferrers
+      - name: fal_views_dates
+      - name: fal_clones_dates
 
 models:
   - name: boston
@@ -167,6 +169,14 @@ models:
             type: string
     config:
       materialized: table
+    meta:
+      owner: "@omer"
+  - name: fal_views_dates_m
+    description: fdal
+    meta:
+      owner: "@omer"
+  - name: fal_clones_dates_m
+    description: fdal
     meta:
       owner: "@omer"
 
